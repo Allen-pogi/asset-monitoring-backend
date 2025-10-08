@@ -22,6 +22,8 @@ mongoose
 const authRoutes = require("./routes/auth");
 app.use("/api", authRoutes);
 
+const assetRoutes = require("./routes/asset");
+app.use("/api", assetRoutes);
 // Sample route
 app.get("/", (req, res) => {
   res.send("Asset Monitoring API is running...");
