@@ -38,19 +38,17 @@ export const getAssetById = async (req, res) => {
   }
 };
 
-// Update an asset by ID
 export const updateAsset = async (req, res) => {
   try {
-    const updatedAsset = await Asset.findByIdAndUpdate(
-      req.params.id,
+    const updatedAsset = await Asset.findOneAndUpdate(
+      { serialNumber: req.params.id }, // search by serialNumber
       req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
+      { new: true, runValidators: true }
     );
+
     if (!updatedAsset)
       return res.status(404).json({ message: "Asset not found" });
+
     res.json(updatedAsset);
   } catch (err) {
     res.status(400).json({ message: err.message });
