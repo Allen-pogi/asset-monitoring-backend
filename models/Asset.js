@@ -10,6 +10,7 @@ const assetSchema = new mongoose.Schema(
     purchaseDate: { type: Date },
     issuedDate: { type: Date },
     issuedTo: { type: String },
+    status: { type: String },
     generateQR: { type: Boolean, default: false },
   },
   { timestamps: true }
